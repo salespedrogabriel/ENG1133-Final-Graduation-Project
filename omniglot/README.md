@@ -2,7 +2,7 @@
 
 This project implements an image classifier based on One-Shot Learning using Siamese Neural Networks and the [Omniglot dataset](https://github.com/brendenlake/omniglot).
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 my_project/
@@ -31,16 +31,16 @@ my_project/
 └── README.md
 ```
 
-## 📦 Requirements
+## Requirements
 
 - Python 3.8+
-- PyTorch
-- torchvision
-- numpy
+- PyTorch 2.1.0
+- torchvision 0.16.0
+- numpy 1.24.3
 - matplotlib
 - seaborn
-- scikit-learn
-- Pillow
+- scikit-learn 1.3.0
+- Pillow 9.5.0
 
 Install with:
 
@@ -48,7 +48,7 @@ Install with:
 pip install torch torchvision numpy matplotlib seaborn scikit-learn Pillow
 ```
 
-## 🚀 Running Training
+## Running Training
 
 Make sure the `images_background_restructured` and `images_evaluation_restructured` folders are correctly organized with one subfolder per class.
 
@@ -65,7 +65,7 @@ During training:
   - `epoch_history.csv`: metrics per batch.
   - `training_results.csv`: final metrics and training parameters.
 
-## 📊 Results
+## Results
 
 At the end of training, the script prints key metrics:
 - Accuracy
@@ -75,16 +75,14 @@ At the end of training, the script prints key metrics:
 
 These metrics help assess model performance comprehensively.
 
-## 📝 Notes
+## Notes
 
 - The model architecture is based on the one proposed in *Koch et al., 2015*, with some adaptations.
 - Images are converted to grayscale and transformed using `RandomAffine`.
 
-## 📚 References
+## References
 
 - [Siamese Neural Networks for One-shot Image Recognition – Koch et al. (2015)](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf)
 - [Omniglot Dataset](https://github.com/brendenlake/omniglot)
 
 ---
-
-Developed with ❤️ for educational and experimental purposes.
