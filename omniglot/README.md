@@ -1,6 +1,6 @@
 # One-Shot Learning with Omniglot using a Siamese Network
 
-This project implements an image classifier based on One-Shot Learning using Siamese Neural Networks and the [Omniglot dataset](https://github.com/brendenlake/omniglot). Make sure to unzip [data.rar](https://github.com/salespedrogabriel/One-Shot-Inspecoes-Submarinas/blob/main/omniglot/data.rar) file
+This project implements an image classifier based on One-Shot Learning using Siamese Neural Networks and the [Omniglot dataset](https://github.com/brendenlake/omniglot). Make sure to unzip [data.rar](https://github.com/salespedrogabriel/One-Shot-Inspecoes-Submarinas/blob/main/omniglot/data.rar) folder
 
 ## Project Structure
 
