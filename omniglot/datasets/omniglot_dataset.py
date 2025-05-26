@@ -10,7 +10,7 @@ class OmniglotTrain(Dataset):
         np.random.seed(0)
 
     def __len__(self):
-        return 21000000
+        return 190000
 
     def __getitem__(self, index):
         image1 = random.choice(self.dataset.imgs)
