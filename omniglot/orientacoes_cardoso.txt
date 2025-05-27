@@ -1,0 +1,44 @@
+Bom dia Prezadxs,
+
+O novo cluster se chama ica-cluster. Continuará sendo acessado pelo IP 139.82.152.10 (por enquanto o acesso externo está permitido, mas quando implementarmos a VPN será revogado).
+
+Os dados antigos de cada usuário está disponível em /home/OLD/<nome_do_usuario>/. Peço que mova os dados necessários para seu novo home /home/<nome_do_usuario>/. Ao final do processo, mantenha os dados antigos, não mais necessários, na pasta /home/OLD/<nome_do_usuario>/ e informe ao suporte que terminou a migração dos dados e que os dados desnecessários podem ser removidos.
+
+Estamos focando a utilização do cluster com o singularity.
+
+Para a utilização do slurm aconselhamos a criação de um arquivo nome_do_arquivo.srm conforme exemplo a seguir:
+
+=============================== nome_do_arquivo.srm  =========================== 
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --partition=gpu
+#SBATCH --ntasks=1
+#SBATCH --mem=7500
+#SBATCH --gres=gpu:1
+#SBATCH --oversubscribe
+#SBATCH --ntasks-per-node=1
+#SBATCH -J nome_do_arquivo.srm
+
+cd $SLURM_SUBMIT_DIR
+NODES=$(scontrol show hostname $SLURM_JOB_NODELIST)
+
+#Exibe os nós alocados para o Job
+echo -e "\n## Job iniciado em $(date '+%d-%m-%Y %T') ##################\n"
+
+echo -e "\nHostname: $(hostname)\n\n"
+
+singularity run -B /share_zeta --nv {path de seu arquivo *.sif} python {path de seu arquivo.py} 
+
+=========================================================================
+
+
+Caso necessite rodar na P100 / V100  ou gpou especifica altere a linha "#SBATCH --gres=gpu:1" para "#SBATCH --gres=gpu:p100:1" ou "#SBATCH --gres=gpu:v100:1"
+
+Para rodar o arquivo .srm utilize:
+$ sbatch nome_do_arquivo.srm
+
+Cada JOB terá um tempo limite de 3 dias. Sendo necessário mais dias solicitar ao suporte para que o prazo seja estendido.
+
+O cluster do ICA não pode ser usado para fazer debug ou para programar (utilizar seu computador de preferencia para essas coisas). O cluster é exclusivo para rodar experimentos.
+
+O usuário que ainda necessita utilizar o docker mantenha backup de sua imagem no Docker HUB ou salve seu docker file. Toda imagem que não estiver com um container ativo por mais de 1 semana (7 dias) será removida dos nós automaticamente.
