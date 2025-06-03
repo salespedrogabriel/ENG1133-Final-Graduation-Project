@@ -1,41 +1,24 @@
-# Change the version of cuda and cudnn according to user cuda and cudnn version
-FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 
+# Imagem base com CUDA, CUDNN, e Python 3.9 já incluído
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install libraries and dependencies
+# Instala apenas os pacotes necessários para seu código
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    software-properties-common \
     ffmpeg \
     libsm6 \
     libxext6 \
-    git \
-    curl \
-    unzip \
-    wget \
-    tar \
-    build-essential \
-    libopenmpi-dev \
-    libcairo2-dev \
-    pkg-config \
-    cmake \
-    libpoppler-cpp-dev \
-    poppler-utils \
-    && add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends python3.9 python3.9-distutils python3.9-dev python3-pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade setuptools
-
-# Update Python symlink to point to Python 3.9
-RUN ln -sf /usr/bin/python3.9 /usr/bin/python \
-    && ln -sf /usr/bin/python3.9 /usr/bin/python3 \
-    && pip install huggingface-hub
-
+# Copia apenas os arquivos necessários
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+# Instala as dependências
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD [ "bash" ]
+# (Opcional) Crie diretório para o código e copie o código para ele
+# COPY . /app
+# WORKDIR /app
+
+CMD ["bash"]
