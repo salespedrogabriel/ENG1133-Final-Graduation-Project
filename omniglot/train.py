@@ -1,5 +1,3 @@
-# Treinamento será adicionado após geração dos módulos
-
 import torch
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
