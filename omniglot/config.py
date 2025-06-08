@@ -8,11 +8,11 @@ class Config:
     TRAIN_DIR = os.path.join(DATA_DIR, "images_background_reestructured")
     TEST_DIR = os.path.join(DATA_DIR, "images_evaluation_reestructured")
 
-    BATCH_SIZE = 64
+    BATCH_SIZE = 128
     MAX_ITER = 15_000
     WAY = 20
     TIMES = 400
-    LEARNING_RATE = 0.0001
+    LEARNING_RATE = 0.0006
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
     MODEL_DIR = os.path.join(BASE_DIR, "model")
