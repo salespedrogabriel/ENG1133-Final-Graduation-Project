@@ -61,8 +61,10 @@ Durante o treinamento, as métricas são salvas em arquivos .csv e os pesos .pth
 ### Resultados Obtidos
 
 Acurácia (Treino): 96.5%  
-F1-Score (Treino): 0.963  
 Acurácia (Teste): 76.5%  
+
+
+F1-Score (Treino): 0.963  
 F1-Score (Teste): 0.764  
 
 ### Trabalhos Futuros
