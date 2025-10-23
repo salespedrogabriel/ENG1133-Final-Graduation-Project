@@ -1,38 +1,38 @@
-# Abordagem One-Shot Learning para Classificação de Imagens de Inspeções Submarinas
+# One-Shot Learning Approach for Underwater Inspection Image Classification
 
-### Sobre o Projeto
-Este projeto foi desenvolvido como parte do **Trabalho de Conclusão de Curso** em Engenharia de Computação.  
-O objetivo é **classificar imagens submarinas** provenientes de inspeções realizadas por **ROVs (Remotely Operated Vehicles)** utilizando uma abordagem de **One-Shot Learning** com **redes siamesas**.
+## About the Project
+This project was developed as part of the **Undergraduate Thesis** in Computer Engineering.
+The goal is to **classify underwater** images obtained from inspections performed by **ROVs (Remotely Operated Vehicles)** using a **One-Shot Learning** approach based on **Siamese Networks**.  
 
-A proposta busca **reduzir o tempo de análise manual** das imagens de inspeções, um processo que pode levar até **40 horas por especialista**, automatizando parte da identificação de estruturas e objetos submarinos.
+The proposal aims to reduce manual analysis time of inspection images — a process that can take up to **40 hours per specialist** — by automating part of the identification of underwater structures and objects.
 
-## Objetivos
+## Objectives
 
-- Implementar uma **arquitetura Siamese Neural Network (SNN)** para aprender similaridade entre imagens.  
-- Adaptar a abordagem clássica do **dataset Omniglot** para um novo conjunto de dados de **inspeções submarinas reais**.  
-- Avaliar o desempenho do modelo em tarefas **N-way One-Shot**.  
-- Gerar métricas completas (acurácia, precisão, recall, F1-score e matriz de confusão).
+- Implement a Siamese Neural Network (SNN) architecture to learn image similarity.  
+- Adapt the classical Omniglot dataset approach to a new set of real underwater inspection images.  
+- Evaluate model performance on N-way One-Shot tasks.  
+- Generate complete performance metrics (accuracy, precision, recall, F1-score, and confusion matrix).  
 
-## Abordagem Técnica
+## Technical Approach
 
-O modelo foi desenvolvido em **PyTorch**, utilizando as seguintes configurações:
+The model was developed using **PyTorch**, with the following configuration:
 
-- **Arquitetura:** Siamese CNN com 3 blocos convolucionais  
-  e duas camadas totalmente conectada 
-- **Função de perda:** `BCEWithLogitsLoss`  
-- **Otimização:** `Adam (lr=0.0001)`  
-- **Avaliação:** tarefas *N-way* (ex: 3-way, 20-way)  
-- **Dataset customizado:** imagens reais de inspeções submarinas, divididas em classes:  
-  - `Duto`   
-  - `Equipamento`  
+- **Architecture:** Siamese CNN with 3 convolutional blocks  
+  and two fully connected layers  
+- **Loss function:** `BCEWithLogitsLoss`  
+- **Optimizer:** `Adam (lr=0.0001)`  
+- **Evaluation:** *N-way* tasks (e.g., 3-way, 20-way)  
+- **Custom dataset:** real underwater inspection images divided into the following classes:  
+  - `Pipeline`  
+  - `Equipment`  
   - `Flange`  
-  - `ROV`
-  - `Manipulador`
-  - `Objeto`
+  - `ROV`  
+  - `Manipulator`  
+  - `Object`
 
-## Como Executar
+## How to Run
 
-### Pré-requisitos
+### Requirements
 
 - Python 3.10+
 - PyTorch
@@ -42,34 +42,33 @@ O modelo foi desenvolvido em **PyTorch**, utilizando as seguintes configuraçõe
 - scikit-learn
 - matplotlib
 
-Instale as dependências com:
+Install dependencies with:  
 
 ```
 pip install -r requirements.txt
 ```
 
-### Treinamento do Modelo
+### Model Training
 
-Execute o script principal
+Run the main training script:  
 
 ```
 python train.py
 ```
 
-Durante o treinamento, as métricas são salvas em arquivos .csv e os pesos .pth serão salvos na pasta model.
+During training, metrics are saved in .csv files, and model weights (.pth) are stored in the model folder.
 
-### Resultados Obtidos
+### Results
 
-Acurácia (Treino): 96.5%  
-Acurácia (Teste): 76.5%  
+Accuracy (Train): 96.5%  
+Accuracy (Test): 76.5%  
 
+F1-Score (Train): 0.963  
+F1-Score (Test): 0.764  
 
-F1-Score (Treino): 0.963  
-F1-Score (Teste): 0.764  
+### Future Work
 
-### Trabalhos Futuros
-
-* Testar arquiteturas menos complexas
-* Explorar outros tipos de abordagens como a Few-Shot Learning
-* Buscar uma maior variação intra-classe
-* Aumentar o número de amostras porém sem comprometer no balanceamento do dataset
+* Test less complex architectures  
+* Explore other approaches such as Few-Shot Learning  
+* Increase intra-class variation  
+* Expand the number of samples while maintaining dataset balance  
